@@ -80,12 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Login button functionality
-const loginBtn = document.querySelector('.btn-login');
-loginBtn.addEventListener('click', () => {
-    // Здесь можно добавить функционал входа
-    alert('Функция входа будет реализована позже');
-});
 
 // Add CSS for animations
 const style = document.createElement('style');
@@ -230,18 +224,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update login button to redirect to electronic diary
     const loginBtn = document.querySelector('.btn-login');
     loginBtn.addEventListener('click', () => {
-        window.open('https://school42-63.ru/electronic-diary', '_blank');
+        window.open('https://asurso.ru/', '_blank');
     });
     
     // Update hero buttons
     const heroButtons = document.querySelectorAll('.hero-buttons .btn');
     heroButtons[0].addEventListener('click', () => {
         // Scroll to admission section or open page
-        window.open('https://school42-63.ru/admission', '_blank');
+        window.open('admission-grade1.html', '_blank');
     });
     
     heroButtons[1].addEventListener('click', () => {
-        window.open('https://school42-63.ru/electronic-diary', '_blank');
+        window.open('https://asurso.ru/', '_blank');
     });
 });
 
