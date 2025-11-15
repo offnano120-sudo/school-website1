@@ -80,7 +80,7 @@
         
         <div class="hero-content">
             <div class="school-badge">
-                <span>Основана в 1995 году</span>
+                <span>Основана в 1939 году</span>
             </div>
             <h1 class="hero-title">МБОУ "Школа №42" г. Самара</h1>
             <p class="hero-subtitle">Школа с углублённым изучением отдельных предметов. Качество образования, традиции и инновации</p>
@@ -306,7 +306,7 @@
                     <i class="fas fa-book"></i>
                     <span>Электронный дневник</span>
                 </a>
-                <a href="#" class="quick-link">
+                <a href="admission-grade1.html" class="quick-link">
                     <i class="fas fa-user-plus"></i>
                     <span>Прием в школу</span>
                 </a>
@@ -367,14 +367,9 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="map-placeholder">
-                    <div class="map-fallback">
-                        <i class="fas fa-map"></i>
-                        <p>Карта расположения школы</p>
-                        <span>г. Самара, ул. Урицкого, д. 1</span>
+                    <div class="map-container">
+                        <div id="school-map" style="width: 100%; height: 300px; border-radius: 15px;"></div>
                     </div>
-                </div>
             </div>
         </div>
     </section>
@@ -418,9 +413,9 @@
                 <div class="footer-section">
                     <h4>Связь с нами</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-odnoklassniki"></i></a>
+                        <a href="https://vk.com/shkola42smr"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/ortinrussia/5363"><i class="fab fa-telegram"></i></a>
+                        <a href="https://yandex.ru/maps/org/shkola_42_s_uglublennym_izucheniyem_otdelnykh_predmetov/1016810965/?ll=50.123100%2C53.191789&z=17"><i class="far fa-map"></i></a>
                     </div>
                     <div class="official-links">
                         <a href="http://samadm.ru" class="official-link">Администрация г.о. Самара</a>
@@ -438,6 +433,52 @@
 
     <script src="js/script.js"></script>
     <script src="js/accessibility.js"></script>
+    <script>
+    // Инициализация карты
+    function initMap() {
+        // Координаты школы: г. Самара, ул. Урицкого, д. 1
+        const schoolCoords = [53.191789, 50.123100];
+        
+        // Создаем карту
+        const map = new ymaps.Map('school-map', {
+            center: schoolCoords,
+            zoom: 16,
+            controls: ['zoomControl', 'fullscreenControl']
+        });
+
+        // Добавляем метку
+        const schoolPlacemark = new ymaps.Placemark(schoolCoords, {
+            balloonContent: `
+                <strong>Школа №42 г.о. Самара</strong><br>
+                ул. Урицкого, д. 1<br>
+                📞 266-58-67
+            `
+        }, {
+            preset: 'islands#blueSchoolIcon',
+            iconColor: '#8B5FBF'
+        });
+
+        map.geoObjects.add(schoolPlacemark);
+        
+        // Адаптируем под мобильные устройства
+        if (window.innerWidth < 768) {
+            map.behaviors.disable('scrollZoom');
+        }
+    }
+
+    // Загружаем API Яндекс.Карт
+    function loadYandexMaps() {
+        const script = document.createElement('script');
+        script.src = 'https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU';
+        script.onload = function() {
+            ymaps.ready(initMap);
+        };
+        document.head.appendChild(script);
+    }
+
+    // Загружаем карту при готовности DOM
+    document.addEventListener('DOMContentLoaded', loadYandexMaps);
+</script>
 
 </script>
 </body>
